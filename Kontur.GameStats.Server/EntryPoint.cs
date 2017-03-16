@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Data.Entity;
 using Fclp;
+using Kontur.GameStats.Server.Configuration;
+using Kontur.GameStats.Server.Data;
 using Microsoft.Owin.Hosting;
 
 namespace Kontur.GameStats.Server
@@ -23,6 +26,9 @@ namespace Kontur.GameStats.Server
                 .Callback(text => Console.WriteLine(text));
             if (commandLineParser.Parse(args).HelpCalled)
                 return;
+
+            Database.SetInitializer(new CreateDatabaseIfNotExists<ApplicationDbContext>());
+            new ApplicationDbContext().Database.Initialize(true);
 
             using (WebApp.Start<Startup>(commandLineParser.Object.Prefix))
             {
