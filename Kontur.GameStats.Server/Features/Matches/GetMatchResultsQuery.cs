@@ -37,7 +37,7 @@ namespace Kontur.GameStats.Server.Features.Matches
             {
                 return await _dbContext.Matches
                     .Where(x => x.Server.Endpoint == query.Endpoint && x.Timestamp == query.Timestamp)
-                    .ProjectTo<MatchResultsDto>(_mapper.ConfigurationProvider)
+                    .ProjectTo<MatchResultsDto>(_mapper.ConfigurationProvider, new { context = _dbContext })
                     .SingleOrDefaultAsync();
             }
         }

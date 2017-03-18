@@ -5,7 +5,7 @@ namespace Kontur.GameStats.Server.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext() : base("Kontur.GameStats.Database")
+        public ApplicationDbContext() : base("Data source='Kontur.GameStats.Database.sdf';Max Database Size=4091;")
         {
 #if DEBUG
             Database.Log = s => Debug.WriteLine(s);

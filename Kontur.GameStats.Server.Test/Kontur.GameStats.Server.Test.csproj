@@ -93,6 +93,10 @@
     <Compile Include="Features\Servers\GetServerInfoQueryHandlerTests.cs" />
     <Compile Include="Features\Matches\PutMatchResultsCommandHandlerTests.cs" />
     <Compile Include="Features\Servers\ServersControllerTests.cs" />
+    <Compile Include="Features\Stats\GetPlayerStatsQueryHandlerTests.cs" />
+    <Compile Include="Features\Stats\TestDbInitializer.cs" />
+    <Compile Include="Features\Stats\GetServerStatsQueryHandlerTests.cs" />
+    <Compile Include="Features\Stats\StatsControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Features\Servers\PutServerInfoCommandHandlerTests.cs" />
     <Compile Include="Dtos\ServerInfoDtoValidatorTests.cs" />

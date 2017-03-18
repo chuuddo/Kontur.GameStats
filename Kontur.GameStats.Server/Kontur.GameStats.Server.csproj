@@ -113,9 +113,14 @@
   <ItemGroup>
     <Compile Include="Configuration\AutoMapperModule.cs" />
     <Compile Include="Configuration\FluentValidationModule.cs" />
+    <Compile Include="Dtos\PlayerStatsDto.cs" />
+    <Compile Include="Dtos\ServerStatsDto.cs" />
     <Compile Include="Features\Matches\GetMatchResultsQuery.cs" />
     <Compile Include="Features\Matches\AutoMapperProfile.cs" />
     <Compile Include="Features\Matches\MatchesController.cs" />
+    <Compile Include="Features\Stats\GetPlayerStatsQuery.cs" />
+    <Compile Include="Features\Stats\GetServerStatsQuery.cs" />
+    <Compile Include="Features\Stats\StatsController.cs" />
     <Compile Include="Infrastructure\PlainTextToJsonHandler.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="Data\GameMode.cs" />

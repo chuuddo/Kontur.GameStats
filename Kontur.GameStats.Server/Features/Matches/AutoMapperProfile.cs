@@ -14,8 +14,9 @@ namespace Kontur.GameStats.Server.Features.Matches
                 .ForMember(x => x.Map, x => x.MapFrom(src => src.Map.Name))
                 .ForMember(x => x.Scoreboard, x => x.MapFrom(src => src.ScoreBoard.OrderByDescending(s => s.ScoreboardPercent)));
 
+            ApplicationDbContext context = null;
             CreateMap<Score, ScoreDto>()
-                .ForMember(x => x.Name, x => x.MapFrom(src => src.Player.Name));
+                .ForMember(x => x.Name, x => x.MapFrom(src => context.Players.FirstOrDefault(p => p.Id == src.PlayerId).Name));
         }
     }
 }
