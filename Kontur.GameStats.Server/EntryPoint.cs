@@ -32,7 +32,10 @@ namespace Kontur.GameStats.Server
 
             using (WebApp.Start<Startup>(commandLineParser.Object.Prefix))
             {
-                while (true) Console.ReadKey(true);
+                while (true)
+                {
+                    Console.ReadKey(true);
+                }
             }
         }
 

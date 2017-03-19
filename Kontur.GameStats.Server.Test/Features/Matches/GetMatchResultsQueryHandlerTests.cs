@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Kontur.GameStats.Server.Data;
+using Kontur.GameStats.Server.Dtos;
 using Kontur.GameStats.Server.Features.Matches;
 using NUnit.Framework;
 

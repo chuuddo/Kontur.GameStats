@@ -113,11 +113,18 @@
   <ItemGroup>
     <Compile Include="Configuration\AutoMapperModule.cs" />
     <Compile Include="Configuration\FluentValidationModule.cs" />
+    <Compile Include="Dtos\BestPlayerDto.cs" />
+    <Compile Include="Dtos\MatchDto.cs" />
     <Compile Include="Dtos\PlayerStatsDto.cs" />
+    <Compile Include="Dtos\PopularServerDto.cs" />
     <Compile Include="Dtos\ServerStatsDto.cs" />
     <Compile Include="Features\Matches\GetMatchResultsQuery.cs" />
-    <Compile Include="Features\Matches\AutoMapperProfile.cs" />
     <Compile Include="Features\Matches\MatchesController.cs" />
+    <Compile Include="Dtos\AutoMapperProfile.cs" />
+    <Compile Include="Features\Reports\GetBestPlayersQuery.cs" />
+    <Compile Include="Features\Reports\GetPopularServersQuery.cs" />
+    <Compile Include="Features\Reports\GetRecentMatchesQuery.cs" />
+    <Compile Include="Features\Reports\ReportsController.cs" />
     <Compile Include="Features\Stats\GetPlayerStatsQuery.cs" />
     <Compile Include="Features\Stats\GetServerStatsQuery.cs" />
     <Compile Include="Features\Stats\StatsController.cs" />
@@ -136,7 +143,6 @@
     <Compile Include="Features\Servers\GetAllServersQuery.cs" />
     <Compile Include="Features\Servers\GetServerInfoQuery.cs" />
     <Compile Include="Features\Servers\PutServerInfoCommand.cs" />
-    <Compile Include="Features\Servers\AutoMapperProfile.cs" />
     <Compile Include="Features\Matches\PutMatchResultsCommand.cs" />
     <Compile Include="Features\Servers\ServersController.cs" />
     <Compile Include="Configuration\MediatrModule.cs" />

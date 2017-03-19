@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Data.Entity;
 using System.IO;
 using System.Threading.Tasks;
 using Kontur.GameStats.Server.Data;
@@ -17,8 +16,8 @@ namespace Kontur.GameStats.Server.Test.Features.Stats
         public void Setup()
         {
             _connection = Path.GetTempFileName() + ".sdf";
-            Database.SetInitializer(new TestDbInitializer());
             _context = new ApplicationDbContext(_connection);
+            new TestDbInitializer().InitializeDatabase(_context);
             _handler = new GetPlayerStatsQuery.Handler(_context);
         }
 
@@ -29,7 +28,7 @@ namespace Kontur.GameStats.Server.Test.Features.Stats
             File.Delete(_connection);
         }
 
-        private static IEnumerable TestCasesPlayer2()
+        private static IEnumerable TestCases()
         {
             yield return new TestCaseData("TotalMatchesPlayed", 3);
             yield return new TestCaseData("TotalMatchesWon", 1);
@@ -48,7 +47,7 @@ namespace Kontur.GameStats.Server.Test.Features.Stats
         private GetPlayerStatsQuery.Handler _handler;
 
         [Test]
-        [TestCaseSource(nameof(TestCasesPlayer2))]
+        [TestCaseSource(nameof(TestCases))]
         public async Task Should_be_equal(string property, object value)
         {
             var result = await _handler.Handle(new GetPlayerStatsQuery("Player 2"));

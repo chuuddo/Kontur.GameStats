@@ -89,12 +89,15 @@
     <Compile Include="Dtos\ScoreDtoValidatorTests.cs" />
     <Compile Include="Features\Matches\GetMatchResultsQueryHandlerTests.cs" />
     <Compile Include="Features\Matches\MatchesControllerTests.cs" />
+    <Compile Include="Features\Reports\GetPopularServersQueryHandlerTests.cs" />
+    <Compile Include="Features\Reports\GetBestPlayersQueryHandlerTests.cs" />
+    <Compile Include="Features\Reports\ReportsControllerTests.cs" />
     <Compile Include="Features\Servers\GetAllServersQueryHandlerTests.cs" />
     <Compile Include="Features\Servers\GetServerInfoQueryHandlerTests.cs" />
     <Compile Include="Features\Matches\PutMatchResultsCommandHandlerTests.cs" />
     <Compile Include="Features\Servers\ServersControllerTests.cs" />
     <Compile Include="Features\Stats\GetPlayerStatsQueryHandlerTests.cs" />
-    <Compile Include="Features\Stats\TestDbInitializer.cs" />
+    <Compile Include="TestDbInitializer.cs" />
     <Compile Include="Features\Stats\GetServerStatsQueryHandlerTests.cs" />
     <Compile Include="Features\Stats\StatsControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

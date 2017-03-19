@@ -3,6 +3,7 @@ using System.IO;
 using System.Threading.Tasks;
 using AutoMapper;
 using Kontur.GameStats.Server.Data;
+using Kontur.GameStats.Server.Dtos;
 using Kontur.GameStats.Server.Features.Servers;
 using NUnit.Framework;
 

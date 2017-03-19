@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.IO;
 using System.Threading.Tasks;
 using Kontur.GameStats.Server.Data;
@@ -17,8 +16,8 @@ namespace Kontur.GameStats.Server.Test.Features.Stats
         public void Setup()
         {
             _connection = Path.GetTempFileName() + ".sdf";
-            Database.SetInitializer(new TestDbInitializer());
             _context = new ApplicationDbContext(_connection);
+            new TestDbInitializer().InitializeDatabase(_context);
             _handler = new GetServerStatsQuery.Handler(_context);
         }
 
