@@ -22,7 +22,7 @@ namespace Kontur.GameStats.Server.Dtos
                 .ForMember(x => x.Scoreboard, x => x.MapFrom(src => src.ScoreBoard.OrderByDescending(s => s.ScoreboardPercent)));
 
             CreateMap<Match, MatchDto>()
-                .ForMember(x => x.Endpoint, x => x.MapFrom(src => src.Server.Endpoint))
+                .ForMember(x => x.Server, x => x.MapFrom(src => src.Server.Endpoint))
                 .ForMember(x => x.Results, x => x.MapFrom(src => src));
 
             CreateMap<Score, ScoreDto>()
