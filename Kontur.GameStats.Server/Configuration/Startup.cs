@@ -28,6 +28,7 @@ namespace Kontur.GameStats.Server.Configuration
             config.Formatters.JsonFormatter.SerializerSettings.Formatting = Formatting.Indented;
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             config.Formatters.JsonFormatter.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
+            config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new DoubleFormatConverter());
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
             config.MessageHandlers.Add(new PlainTextToJsonHandler());
             app.UseAutofacMiddleware(container);
