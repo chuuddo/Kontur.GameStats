@@ -1,13 +1,16 @@
 ﻿using System.Net.Http.Formatting;
 using System.Reflection;
 using System.Web.Http;
+using System.Web.Http.ExceptionHandling;
 using Autofac;
 using Autofac.Integration.WebApi;
 using Kontur.GameStats.Server.Data;
 using Kontur.GameStats.Server.Infrastructure;
+using Microsoft.Owin.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Owin;
+using LoggerFactory = SerilogWeb.Owin.LoggerFactory;
 
 namespace Kontur.GameStats.Server.Configuration
 {
@@ -31,6 +34,8 @@ namespace Kontur.GameStats.Server.Configuration
             config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new DoubleFormatConverter());
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
             config.MessageHandlers.Add(new PlainTextToJsonHandler());
+            config.Services.Add(typeof(IExceptionLogger), new SerilogExceptionLogger());
+            app.SetLoggerFactory(new LoggerFactory());
             app.UseAutofacMiddleware(container);
             app.UseAutofacWebApi(config);
             app.UseWebApi(config);
