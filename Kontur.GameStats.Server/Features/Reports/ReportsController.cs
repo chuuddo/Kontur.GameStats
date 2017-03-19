@@ -3,9 +3,11 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using Kontur.GameStats.Server.Dtos;
 using MediatR;
+using WebApi.OutputCache.V2;
 
 namespace Kontur.GameStats.Server.Features.Reports
 {
+    [CacheOutput(ClientTimeSpan = 60, ServerTimeSpan = 60)]
     [Route("reports/{action}/{count:int?}")]
     public class ReportsController : ApiController
     {

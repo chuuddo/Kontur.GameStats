@@ -2,6 +2,8 @@
 using System.Web.Http;
 using Kontur.GameStats.Server.Dtos;
 using MediatR;
+using WebApi.OutputCache.V2;
+using WebApi.OutputCache.V2.TimeAttributes;
 
 namespace Kontur.GameStats.Server.Features.Servers
 {
@@ -22,6 +24,7 @@ namespace Kontur.GameStats.Server.Features.Servers
             return Ok(content);
         }
 
+        [CacheOutputUntilToday]
         [Route("servers/info")]
         public async Task<IHttpActionResult> GetAllServers()
         {
@@ -29,6 +32,7 @@ namespace Kontur.GameStats.Server.Features.Servers
             return Ok(content);
         }
 
+        [InvalidateCacheOutput(nameof(GetAllServers))]
         [Route("servers/{endpoint}/info")]
         public async Task<IHttpActionResult> PutServer(string endpoint, ServerInfoDto serverInfo)
         {

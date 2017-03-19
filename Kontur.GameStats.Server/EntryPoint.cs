@@ -14,6 +14,19 @@ namespace Kontur.GameStats.Server
 
         public static void Main(string[] args)
         {
+            var commandLineParser = new FluentCommandLineParser<Options>();
+            commandLineParser
+                .Setup(options => options.Prefix)
+                .As("prefix")
+                .SetDefault("http://+:8080/")
+                .WithDescription("HTTP prefix to listen on");
+            commandLineParser
+                .SetupHelp("h", "help")
+                .WithHeader($"{AppDomain.CurrentDomain.FriendlyName} [--prefix <prefix>]")
+                .Callback(text => Console.WriteLine(text));
+            if (commandLineParser.Parse(args).HelpCalled)
+                return;
+
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.LiterateConsole(outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message}{NewLine}")
                 .WriteTo.RollingFile("Logs/log-{Date}.txt")
@@ -28,20 +41,7 @@ namespace Kontur.GameStats.Server
                 Log.Logger.Information("Web server stoped.");
                 Environment.Exit(0);
             };
-
-            var commandLineParser = new FluentCommandLineParser<Options>();
-            commandLineParser
-                .Setup(options => options.Prefix)
-                .As("prefix")
-                .SetDefault("http://+:8080/")
-                .WithDescription("HTTP prefix to listen on");
-            commandLineParser
-                .SetupHelp("h", "help")
-                .WithHeader($"{AppDomain.CurrentDomain.FriendlyName} [--prefix <prefix>]")
-                .Callback(text => Console.WriteLine(text));
-            if (commandLineParser.Parse(args).HelpCalled)
-                return;
-
+            
             Log.Logger.Information("Initializing database...");
             Database.SetInitializer(new CreateDatabaseIfNotExists<ApplicationDbContext>());
             new ApplicationDbContext().Database.Initialize(true);

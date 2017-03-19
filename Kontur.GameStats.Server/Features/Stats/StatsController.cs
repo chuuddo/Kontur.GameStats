@@ -1,9 +1,11 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Http;
 using MediatR;
+using WebApi.OutputCache.V2;
 
 namespace Kontur.GameStats.Server.Features.Stats
 {
+    [CacheOutput(ClientTimeSpan = 60, ServerTimeSpan = 60)]
     public class StatsController : ApiController
     {
         private readonly IMediator _mediator;
